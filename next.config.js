@@ -5,6 +5,7 @@ const nextConfig = {
     domains: ['res.cloudinary.com']
   },
   swcMinify: true,
+  ignoreDuringBuilds: true,
 }
 
 module.exports = nextConfig
