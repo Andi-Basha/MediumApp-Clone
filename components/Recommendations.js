@@ -19,13 +19,13 @@ const styles = {
   authorActions: `flex gap-[.6rem] my-[1rem]`,
   actionButton: `bg-[#1A8917] text-white rounded-full px-[.6rem] py-[.4rem] text-sm`,
   recommendationAuthorProfileImageContainer: `rounded-full overflow-hidden h-[1.4rem] w-[1.4rem]`,
-  recommendationAuthorName:`text-sm`,
-  recommendationAuthorContainer:` flex items-center gap-[.6rem]`,
-  recommendationTitle:`font-bold`,
-  recommendationThumbnailContainer:`flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
-  recommentationThumbnail:`object-cover`,
-  articleContentWrapper:`flex items-center justify-between cursor-pointer my-[1rem]`,
-  articleContent:`flex-[4]`,
+  recommendationAuthorName: `text-sm`,
+  recommendationAuthorContainer: ` flex items-center gap-[.6rem]`,
+  recommendationTitle: `font-bold`,
+  recommendationThumbnailContainer: `flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
+  recommentationThumbnail: `object-cover`,
+  articleContentWrapper: `flex items-center justify-between cursor-pointer my-[1rem]`,
+  articleContent: `flex-[4]`,
 };
 
 const Recommendations = ({ author }) => {
@@ -58,57 +58,63 @@ const Recommendations = ({ author }) => {
       <div className={styles.recommendationContainer}>
         <div className={styles.title}>More from Medium</div>
         <div className={styles.articlesContainer}>
+          {recommendedPosts.map((post) => (
+            <div className={styles.articleContentWrapper} key={post.id}>
+              <div className={styles.articleContent}>
+                <div className={styles.recommendationAuthorContainer}>
+                  <div
+                    className={styles.recommendationAuthorProfileImageContainer}
+                  >
+                    <Image src={post.author.image} height={100} width={100} />
+                  </div>
+                  <div className={styles.recommendationAuthorName}>
+                    {post.author.name}
+                  </div>
+                </div>
+                <div className={styles.recommendationTitle}>{post.title}</div>
+              </div>
 
-            {recommendedPosts.map(post =>(
-            <div className={styles.articleContentWrapper}>
-                <div className={styles.articleContent}>
-
-          <div className={styles.recommendationAuthorContainer}>
-            <div className={styles.recommendationAuthorProfileImageContainer}>
-              <Image src={post.author.image} height={100} width={100} />
+              <div className={styles.recommendationThumbnailContainer}>
+                <Image
+                  className={styles.recommentationThumbnail}
+                  src={post.image}
+                  height={100}
+                  width={100}
+                />
+              </div>
             </div>
-            <div className={styles.recommendationAuthorName}>{post.author.name}</div>
-            </div>
-            <div className={styles.recommendationTitle}>{post.title}</div>
-          </div>
-          
-            <div className={styles.recommendationThumbnailContainer}>
-          <Image className={styles.recommentationThumbnail} src={post.image} height={100} width={100} />
-          </div>
-        </div>
-            ))}
+          ))}
         </div>
       </div>
     </div>
-    
   );
 };
 
 export default Recommendations;
 
 const recommendedPosts = [
-    {
-        title: 'What can you do with Replit?',
-        image: ReplitLogo,
-        author:{
-            name: 'Andi Basha',
-            image: CPLogo,
-        }
+  {
+    title: "What can you do with Replit?",
+    image: ReplitLogo,
+    author: {
+      name: "Andi Basha",
+      image: CPLogo,
     },
-    {
-        title: 'Understanding Asynchronous JavaScript?',
-        image: TutorialImg,
-        author:{
-            name: 'Andi Basha',
-            image: Qazi,
-        }
+  },
+  {
+    title: "Understanding Asynchronous JavaScript?",
+    image: TutorialImg,
+    author: {
+      name: "Andi Basha",
+      image: Qazi,
     },
-    {
-        title: 'How to Become a Developer in 2022?',
-        image: JSLogo,
-        author:{
-            name: 'Andi Basha',
-            image: CPLogo,
-        }
+  },
+  {
+    title: "How to Become a Developer in 2022?",
+    image: JSLogo,
+    author: {
+      name: "Andi Basha",
+      image: CPLogo,
     },
-]
+  },
+];
